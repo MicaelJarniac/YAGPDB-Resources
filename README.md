@@ -1,3 +1,5 @@
-# YAGPDB Custom Commands
+# YAGPDB Resources
 
-In this repo you'll find custom commands made for YAGPDB.
+In this repo you'll find resources, like custom commands, for YAGPDB.
+
+- [Custom Commands](/cc)

@@ -11,4 +11,4 @@ From there, go in **Core** -> **Custom commands**.
 In there you can create custom command groups and custom commands.
 
 These are the ones we currently have:
-- [TODO](/YAGPDB/todo.md)
+- [TODO](/cc/todo.md)
