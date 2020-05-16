@@ -1,8 +1,4 @@
-# YAGPDB
-
-YAGPDB (Yet Another General Purpose Discord Bot), YAG for short, is a multi-purpose Discord bot that can take care of moderation and has a lot of possibilities with its custom commands, for example.
-
-## Custom Commands
+# Custom Commands
 
 Head to the dashboard at [https://yagpdb.xyz/manage](https://yagpdb.xyz/manage), log in with your Discord account and pick the server you want to configure in the dropdown list next to your username.
 
