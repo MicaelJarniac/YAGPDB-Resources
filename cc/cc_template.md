@@ -4,20 +4,22 @@ This is a template for basic custom commands.
 
 ## Setup
 
-1. Create a new **Custom Commands** group (hit the **+** sign)
+1. Create a new **Custom Commands** group (press <kbd><samp>+</samp></kbd>)
 1. Name it `My Group` or something similar
 1. For **Whitelist roles for who can use these commands**, pick the roles that should have access to the command
 1. For **Channels these commands can be used in**, pick all channels where the command should run
 1. Leave the other settings on their default
-1. **Create a new Custom Command**
+1. <kbd><samp>Save group settings</samp></kbd>
+1. <kbd><samp>Create a new Custom Command</samp></kbd>
 1. For **Trigger type** select **Reaction**, and then pick **Added reactions only**
 1. For **Trigger type** select **Contains**, and leave the **Trigger** empty, to have it trigger on every message
 1. On **Response** copy and paste the first command from the **Custom Command** section below
 1. Ensure **Custom command group** remains the previously created group (`My Group`)
 1. Disable **Output errors as command response**
 1. Leave the other settings on their default
-1. Save and repeat those steps on the same group for the second command below
-1. Save and test!
+1. <kbd><samp>Save</samp></kbd>
+1. Repeat those steps on the same group for the second command below
+1. Test!
 
 ## Custom Command
 
