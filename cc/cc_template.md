@@ -11,9 +11,10 @@ This is a template for basic custom commands.
 1. Leave the other settings on their default
 1. <kbd><samp>Save group settings</samp></kbd>
 1. <kbd><samp>Create a new Custom Command</samp></kbd>
-1. For **Trigger type** select **Reaction**, and then pick **Added reactions only**
-1. For **Trigger type** select **Contains**, and leave the **Trigger** empty, to have it trigger on every message
-1. On **Response** copy and paste the first command from the **Custom Command** section below
+1. For **Trigger type**, select **Reaction** and then pick **Added reactions only**
+1. For **Trigger type**, select **Contains** and leave the **Trigger** empty, to have it trigger on every message
+1. On **Response**, copy and paste the first command from the [**Custom Command**](#Custom-Command) section below
+1. Edit settings inside the custom command according to the [**Configuration**](#Configuration) section below
 1. Ensure **Custom command group** remains the previously created group (`My Group`)
 1. Disable **Output errors as command response**
 1. Leave the other settings on their default
@@ -77,7 +78,7 @@ And this one does even less!
 
 ## Configuration
 
-At the beginning of each custom command, there's a section for configuring it.
+At the beginning of each custom command, there's a section for configuring it, starting at `{{/* Basic configuration */}}` and ending at `{{/* -- END OF CONFIGURATION -- */}}`.
 
 `setSomething` is a boolean (`true` or `false`) that configures whether the user should wonder if the custom command does something or not.
 
