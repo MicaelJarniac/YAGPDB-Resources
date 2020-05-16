@@ -6,5 +6,8 @@ From there, go in **Core** -> **Custom commands**.
 
 In there you can create custom command groups and custom commands.
 
-These are the ones we currently have:
+Custom command templates and useful functions:
+- [Basic Template](/cc/cc_template.md)
+
+Custom commands:
 - [TODO](/cc/todo.md)
