@@ -11,12 +11,3 @@ Custom command templates and useful functions:
 
 Custom commands:
 - [TODO](/cc/todo.md)
-
-Ignore this just testin'
-<kbd>kbd</kbd>
-
-<code>code</code>
-
-<samp>samp</samp>
-
-<pre>pre</pre>
