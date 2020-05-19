@@ -2,6 +2,8 @@
 
 This is a rolemenu that automatically removes the reactions.
 
+**This command is basically useless, and is now in an archived state**
+
 ## Setup
 
 1. Create a new **Custom Commands** group (press <kbd><samp>+</samp></kbd>)
@@ -17,8 +19,9 @@ This is a rolemenu that automatically removes the reactions.
 This is what handles the reactions and gives roles.
 
 ```js
-{{$setEmoji := "accept:560961075613401088"}}
-{{$setRole  := "274328749217153024"}}
+{{$setEmoji  := "accept:560961075613401088"}}
+{{$setRole   := 274328749217153024}}
+{{$baseRoles := (cslice $setRole 269148233320759307 711797275168342057)}}
 
 {{$theUser  := (.Reaction.UserID)}}
 {{$theEmoji := (joinStr ":" (.Reaction.Emoji.Name) (toString .Reaction.Emoji.ID))}}
@@ -26,7 +29,18 @@ This is what handles the reactions and gives roles.
 {{deleteMessageReaction nil .Reaction.MessageID $theUser $theEmoji}}
 
 {{if eq $theEmoji $setEmoji}}
-  {{addRoleID $setRole}}
+  {{$theUserRoles := (getMember $theUser).Roles}}
+  {{$giveRole := true}}
+
+  {{range $i, $e := $theUserRoles}}
+    {{if in $baseRoles $e}}
+      {{$giveRole = false}}
+    {{end}}
+  {{end}}
+
+  {{if $giveRole}}
+    {{addRoleID $setRole}}
+  {{end}}
 {{else}}
   {{deleteAllMessageReactions .Reaction.ChannelID .Reaction.MessageID}}
   {{addReactions $setEmoji}}
