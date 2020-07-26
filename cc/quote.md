@@ -1,8 +1,6 @@
 ```js
-{{$deletedTrigger := false}}
 {{if eq (len .Args) 1}}
     {{deleteTrigger 1}}
-    {{$deletedTrigger = true}}
 {{end}}
 
 {{$quoteURLRegex := "https?:\\/\\/discord(?:app)?.com\\/channels\\/\\d+\\/\\d+\\/\\d+"}}
@@ -18,16 +16,11 @@
 {{$quoteUser := $quoteMessage.Author}}
 
 {{$rawEmbed := sdict
-    "description" $quoteMessage.Content
+    "description" (joinStr "" "**[Message](" $quoteURL ") from <#" $quoteMessage.ChannelID ">:**\n\n" $quoteMessage.Content)
     "author" (sdict "name" $quoteUser.Username "icon_url" ($quoteUser.AvatarURL "256"))
+    "footer" (sdict "text" (joinStr "" "Quoted by " .Message.Author.Username) "icon_url" (.Message.Author.AvatarURL "256"))
     "timestamp" $quoteMessage.Timestamp
 }}
-
-{{$rawContent := joinStr "" "Quote by " $quoteUser.Mention}}
-
-{{if $deletedTrigger}}
-    {{$rawContent = joinStr " - " $rawContent $quoteURL}}
-{{end}}
 
 {{$files := ""}}
 
@@ -38,18 +31,20 @@
         {{$rawEmbed.Set "image" (sdict "url" $quoteAttachment.URL)}}
         {{$quoteAttachmentImage = true}}
     {{else}}
-        {{if eq (len $files) 0}}
-            {{$files = "\n\n**Files:**"}}
-        {{end}}
         {{$files = joinStr "" $files "\n`" $quoteAttachment.Filename "`: " $quoteAttachment.URL}}
     {{end}}
 {{end}}
 
-{{$messageContent := joinStr "" $rawContent $files}}
+{{if gt (len $files) 0}}
+    {{if not ($rawEmbed.Get "fields")}}
+        {{$rawEmbed.Set "fields" cslice}}
+    {{end}}
+    {{$rawEmbed.Set "fields" (($rawEmbed.Get "fields").Append (sdict "name" "Files" "value" $files "inline" true))}}
+{{end}}
 
 {{$messageEmbed := cembed $rawEmbed}}
 
-{{$message := complexMessage "content" $messageContent "embed" $messageEmbed}}
+{{$message := complexMessage "embed" $messageEmbed}}
 
 {{sendMessage nil $message}}
 ```
