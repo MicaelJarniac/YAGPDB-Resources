@@ -1,9 +1,13 @@
+```regex
+https?:\/\/(?:www\.)?(?:\w*\.)?discord(?:app)?.com\/channels\/\d+\/\d+\/\d+
+```
+
 ```js
 {{if eq (len .Args) 1}}
     {{deleteTrigger 1}}
 {{end}}
 
-{{$quoteURLRegex := "https?:\\/\\/discord(?:app)?.com\\/channels\\/\\d+\\/\\d+\\/\\d+"}}
+{{$quoteURLRegex := "https?:\\/\\/(?:www\\.)?(?:\\w*\\.)?discord(?:app)?.com\\/channels\\/\\d+\\/\\d+\\/\\d+"}}
 
 {{$quoteURL := reFind $quoteURLRegex .Cmd}}
 
